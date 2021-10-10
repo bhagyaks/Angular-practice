@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { __assign } from 'tslib';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
@@ -27,7 +27,6 @@ export class FetchChecksComponent implements OnInit{
    * disables all elements except first div. create data array, to  update yes no button values
    */
     disableElement(check,index) {
-        // this.createArray(check,i);
         this.dataArray[index]={'id': index,'checkId':check.id, 'value' : null};
         return check === this.fetchData[0] ? false : true; 
     }
@@ -110,12 +109,14 @@ export class FetchChecksComponent implements OnInit{
                 }
             });
         } else if (event.keyCode === 40) {
-            if (!event.target.parentNode.parentNode.nextElementSibling.classList.contains("disabled")) {
-                event.target.parentNode.parentNode.nextElementSibling.lastChild.firstChild.focus();
+            if (event.target.parentNode.parentNode.nextElementSibling && !event.target.parentNode.parentNode.nextElementSibling.classList.contains("disabled")) {
+                if(event.target.parentNode.parentNode.nextElementSibling.lastChild)
+                    event.target.parentNode.parentNode.nextElementSibling.lastChild.firstChild.focus();
             }
         } else if (event.keyCode === 38) {
-            if (!event.target.parentNode.parentNode.previousElementSibling.classList.contains("disabled")) {
-                event.target.parentNode.parentNode.previousElementSibling.lastChild.firstChild.focus();
+            if (event.target.parentNode.parentNode.previousElementSibling && !event.target.parentNode.parentNode.previousElementSibling.classList.contains("disabled")) {
+                if(event.target.parentNode.parentNode.previousElementSibling.lastChild)
+                    event.target.parentNode.parentNode.previousElementSibling.lastChild.firstChild.focus();
             }
         }else if (event.keyCode === 13){
             event.preventDefault();
