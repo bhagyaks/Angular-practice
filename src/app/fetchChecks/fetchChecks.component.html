@@ -1,5 +1,5 @@
 <div class="App">
-    <div *ngFor="let check of fetchData;let i=index" class="container" [class.disabled]="disableElement(check,i)">
+    <div *ngFor="let check of fetchData;let i=index" class="container" [class.disabled]="disableElement(check)">
         <div class="question"><span>{{check.description}}</span></div>
         <div class="tab" value="" [id]="i" (keyup)="handleKey($event)" (keydown.enter)="$event.preventDefault()" >
             <button id="yes" tabindex=-1 value="Yes" (click)="handleButton($event)" autofocus>

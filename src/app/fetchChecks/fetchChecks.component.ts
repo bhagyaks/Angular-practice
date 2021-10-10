@@ -18,16 +18,17 @@ export class FetchChecksComponent implements OnInit{
         this.apiService.fetchChecks().then(data => {
             this.fetchData = data;
             this.fetchData.sort((a,b) => a.priority - b.priority);
+            for(let i=0;i<this.fetchData.length;i++) {
+                this.dataArray[i]={'id': i,'checkId':this.fetchData[i].id, 'value': null};
+            }
         });
 
     }
     /**
    * @param check - check 
-   * @param i - index of div
    * disables all elements except first div. create data array, to  update yes no button values
    */
-    disableElement(check,index) {
-        this.dataArray[index]={'id': index,'checkId':check.id, 'value' : null};
+    disableElement(check) {
         return check === this.fetchData[0] ? false : true; 
     }
      /**
@@ -56,7 +57,14 @@ export class FetchChecksComponent implements OnInit{
       enableNextQuestion(elementId) {
         if (document.getElementById(elementId)) {
             document.getElementById(elementId).parentElement.classList.remove("disabled");
-            document.getElementById("app_submit").setAttribute("disabled", "true");
+            for (let i=0;i<this.dataArray.length;i++)
+            {
+                if(this.dataArray[i].value===null)
+                {
+                    document.getElementById("app_submit").setAttribute("disabled", "true");
+                    break;
+                }
+            }
         }
         else {
             document.getElementById("app_submit").removeAttribute("disabled");
