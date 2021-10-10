@@ -1,0 +1,15 @@
+<div class="App">
+    <div *ngFor="let check of fetchData;let i=index" class="container" [class.disabled]="disableElement(check,i)">
+        <div class="question">{{check.description}}</div>
+        <div class="tab" value="" [id]="i" (keyup)="handleKey($event)" (keydown.enter)="$event.preventDefault()" >
+            <button id="yes" tabindex=-1 value="Yes" (click)="handleButton($event)" autofocus>
+                Yes
+            </button>
+            <button id="no"  tabindex=-1 value="No" (click)="handleButton($event)">
+                No
+            </button>
+        </div>
+    </div>
+    <br />
+    <div class="submit_section"><button *ngIf="fetchData" class="button" disabled="disabled" id="app_submit" (click)="submitData()">Submit</button></div>
+</div>
