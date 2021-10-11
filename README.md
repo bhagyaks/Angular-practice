@@ -37,6 +37,16 @@ shortcuts. Keyboard shortcuts work as follows:
 
 ● 2 to answer check as No
 
+# Demo
+
+1. Mouse Capture
+
+![angular-mouse-capture](https://user-images.githubusercontent.com/88626686/136771681-2ae35915-fb1f-4535-9179-d1b7f166e00e.gif)
+
+2. Keyboard Capture
+
+![angular-keyboard-capture](https://user-images.githubusercontent.com/88626686/136771737-ddaf7ab9-aa38-4bae-ba74-3f03345c14f6.gif)
+
 ## Development server
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
